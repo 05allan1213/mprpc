@@ -1,0 +1,2 @@
+/home/ayp/Program/mprpc/build/CMakeFiles/edit_cache.dir
+/home/ayp/Program/mprpc/build/CMakeFiles/rebuild_cache.dir
