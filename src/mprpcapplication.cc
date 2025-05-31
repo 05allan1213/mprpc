@@ -3,9 +3,11 @@
 #include <unistd.h>
 #include <string>
 
+MprpcConfig MprpcApplication::m_config;
+
 void ShowArgsHelp()
 {
-    std::cout << "Usage: ./server -i <config file>" << std::endl;
+    std::cout << "Usage: Command -i <config file>" << std::endl;
 }
 
 MprpcApplication::MprpcApplication() {}
@@ -28,11 +30,9 @@ void MprpcApplication::Init(int argc, char **argv)
             config_file = optarg;
             break;
         case '?':
-            std::cout << "Invalid args!" << std::endl;
             ShowArgsHelp();
             exit(EXIT_FAILURE);
         case ':':
-            std::cout << "need -i <config file>" << std::endl;
             ShowArgsHelp();
             exit(EXIT_FAILURE);
         default:
@@ -45,6 +45,13 @@ void MprpcApplication::Init(int argc, char **argv)
     // rpcserver_port
     // zookeeper_ip
     // zookeeper_port
+    m_config.LoadConfigFile(config_file.c_str());
+
+    // 测试
+    std::cout << "rpcserverip: " << m_config.Load("rpcserverip") << std::endl;
+    std::cout << "rpcserverport: " << m_config.Load("rpcserverport") << std::endl;
+    std::cout << "zookeeperip: " << m_config.Load("zookeeperip") << std::endl;
+    std::cout << "zookeeperport: " << m_config.Load("zookeeperport") << std::endl;
 }
 
 MprpcApplication *MprpcApplication::GetInstance()
