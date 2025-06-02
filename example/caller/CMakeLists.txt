@@ -1,8 +1,8 @@
-aux_source_directory(./src SRC)
+set(SRC_LIST calluserservice.cc ../user.pb.cc)
 
-add_executable(caller ${SRC})
+add_executable(consumer ${SRC_LIST})
 
-target_link_libraries(caller 
+target_link_libraries(consumer 
     mprpc 
     protobuf
     absl::log
