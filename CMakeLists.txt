@@ -36,6 +36,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib) # 设置库文件输
 # --- 设置头文件搜索路径 ---
 include_directories(${PROJECT_SOURCE_DIR}/src/include)
 include_directories(${PROJECT_SOURCE_DIR}/example)
+include_directories(${PROJECT_SOURCE_DIR})  
 
 # --- 设置库文件搜索路径 ---
 link_directories(${CMAKE_SOURCE_DIR}/lib)
